@@ -1,7 +1,7 @@
 dnl ====================================================================
 dnl   configure.in for RHEA
 dnl ====================================================================
-AC_PREREQ(2.61)
+AC_PREREQ([2.69])
 AC_INIT(rhea, 0.5.4, [acy@hiemalis.org])
 AC_CONFIG_SRCDIR([m2x_main.cpp])
 AC_CONFIG_HEADER([config.h])
