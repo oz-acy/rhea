@@ -1,0 +1,56 @@
+#! /usr/local/bin/ruby
+# -*- encoding: UTF-8 -*-
+
+###########################################################################
+#
+#  rhea-dicout
+#  by oZ/acy
+#  (c) 2004-2009 oZ/acy.  ALL RIGHTS RESERVED.
+#
+#  system RHEA
+#  辭書システム 單語別ファイル生成
+#
+###########################################################################
+
+def toFileName(ent)
+  a = ent.unpack('C*')
+  s = ""
+  a.each { |i| s = s + sprintf("%02X", i) }
+  s + '.html'
+end
+
+#======== main routine ========
+
+inpath = ARGV.shift
+outdir = ARGV.shift
+
+instr = ""
+File.open(inpath, 'r:utf-8') do |f|
+  instr = f.read
+end
+
+words = []
+instr.scan(/<!--WORD START-->(.*?)<!--WORD END-->/m) do |w|
+  words << w[0]
+end
+
+words.each do |wstr|
+  ent = ""
+  wstr.sub!(/<!--WORD=(.*)=WORD-->/) do
+    ent = $1
+    ""
+  end
+
+  tstr = ""
+  File.open('dic-t.html', 'r:utf-8') { |f| tstr = f.read }
+
+  tstr.gsub!(/<!-- RHEA_DICENTRY -->/, ent)
+  tstr.gsub!(/<!-- RHEA_DIC -->/, wstr)
+
+  File.open(outdir + '/' + toFileName(ent), 'w:utf-8') do |f|
+    f << tstr
+  end
+end
+
+
+#eof

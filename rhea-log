@@ -1,0 +1,30 @@
+#! /usr/local/bin/ruby
+################################################################################
+#
+#  rhea-log
+#  by oZ/acy
+#  (c) 2003-2004.  ALL RIGHTS RESERVED.
+#
+#  system RHEA ¹¹¿·ÍúÎò HTML ²½
+#
+#  last update: 23 May 2004
+#
+################################################################################
+
+lines = IO.readlines('top/log.txt')
+#@rsite.setLastLog(lines[0])
+
+logstr = "<ul>\n"
+lines.each do |l|
+  logstr << "<li>" << l << "</li>\n"
+end
+logstr << "</ul>\n"
+
+tstr = ""
+open('log-t.html') { |f| tstr = f.read }
+
+open('html/log.html', "w") do |f|
+  f << tstr.gsub(/<!-- RHEA_UPDATE -->/, logstr)
+end
+
+#eof

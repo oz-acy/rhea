@@ -1,0 +1,21 @@
+"README" of RHEA
+
+本プログラム群は、作者の運營するWebサイト「多言數窮」の管理・構築の爲の
+システムを構成してゐる。
+
+各プログラムの説明を記す。
+
+metis2xml
+  LIBMETISを用ゐて、Metis記述をXML記述に變換する。
+
+rhea-diary
+  日記管理システム。
+  日記用に記述されたMetis記述群から、カテゴリ分類リストのソースMetis記述や、
+  HTMLに變換するためのMakefileを生成する。
+
+
+
+==================================================
+oZ/acy
+acy@hiemalis.org
+http://www.hiemalis.org/~acy/

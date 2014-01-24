@@ -1,0 +1,45 @@
+#! /usr/local/bin/ruby
+###########################################################################
+#
+#  top.rb
+#  by oZ/acy
+#  (c) 2003-2006.  ALL RIGHTS RESERVED.
+#
+#  system RHEA Top ╫пно
+#
+#  last update: 2 March MMVI
+#
+###########################################################################
+
+#lines = IO.readlines('top/log.txt')
+#lastlog = lines[0]
+
+logstr = ""
+open('mediation/top/log.html', 'r:utf-8') do |f|
+  s = f.read
+  s.scan(/<!--==LATEST==-->(.*?)<!--==LATEST==-->/m) do |w|
+    logstr = $1
+  end
+end
+
+
+msgstr = ""
+open('mediation/top/diary.html', 'r:utf-8') do |f|
+  s = f.read
+  s.scan(/<!--==LATEST==-->(.*?)<!--==LATEST==-->/m) do |w|
+    msgstr = $1
+  end
+end
+
+
+tstr = ""
+open('mediation/top/index.html', 'r:utf-8') { |f| tstr = f.read }
+
+tstr.gsub!(/<!--==RHEA_UPDATE==-->/, logstr)
+tstr.gsub!(/<!--==RHEA_MESSAGE==-->/, msgstr)
+
+open('html/index.html', "w:utf-8") do |f|
+  f << tstr
+end
+
+#eof
