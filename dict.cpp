@@ -2,9 +2,9 @@
  *
  *  dict.cpp
  *  by oZ/acy
- *  (c) 2005-2011 oZ/acy.  ALL RIGHTS RESERVED.
+ *  (c) 2005-2014 oZ/acy.  ALL RIGHTS RESERVED.
  *
- *  last update: 9 Sep MMXI
+ *  last update: 3 March MMXIV
  *
  *************************************************************************/
 
@@ -145,7 +145,7 @@ void rhea::Dictionary::printMakefile4Html(std::ostream& os)
 
 /*=====================================================
 *  Dictionary::outputList()
-*  update: 2008.9.19
+*  update: 2014.3.3
 *====================================================*/
 void
 rhea::Dictionary::outputList(
@@ -167,12 +167,12 @@ rhea::Dictionary::outputList(
       << "}" << endl;
   ofs << "@nickname{語解字録}" << endl;
 
-  ofs << "@rhea:address{" << endl;
+  ofs << "@rhea:foot-notice{" << endl;
   ofs << "@rhea:copy; 2000-" << today.year() << " oZ/acy, 多言數窮." << endl;
   ofs << " ALL RIGHTS RESERVED." << endl;
   ofs << "}" << endl;
 
-  ofs << "@rhea:css{shift-r3.css}" << endl;
+  ofs << "@rhea:css{shift-r3a.css}" << endl;
   ofs << "@rhea:navi{" << endl;
   ofs << "@rhea:path{@rhea:ref[id {root}];}" << endl;
   ofs << "@rhea:notice{@rhea:ref[id {guide-top}, subid {doc}]"
