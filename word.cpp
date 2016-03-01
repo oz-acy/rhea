@@ -2,9 +2,10 @@
  *
  *  word.cpp
  *  by oZ/acy
- *  (c) 2005-2011 oZ/acy.  ALL RIGHTS RESERVED.
+ *  (c) 2005-2016 oZ/acy.  ALL RIGHTS RESERVED.
  *
- *  last update: 7 Nov MMXI
+ *  履歴
+ *    2016.3.1  修正
  *
  *************************************************************************/
 
@@ -229,9 +230,12 @@ std::list<rhea::Word> rhea::Word::parseDic(const std::string& path)
 
 
 /*=====================================================
-*  Word::toXsl4Html()
-*  update: 2008.9.19
-*====================================================*/
+ *  Word::toXsl4Html()
+ *
+ *  履歴
+ *    2008.9.19  update
+ *    2016.3.1   修正(Clang + libc++-v3でリンクエラーが出たので廻避)
+ */
 std::string rhea::Word::toXsl4Html(const std::string& prefix) const
 {
   using namespace std;
@@ -247,10 +251,16 @@ std::string rhea::Word::toXsl4Html(const std::string& prefix) const
 
     // entryに指定された文字列
     entry_->accept(svgx);
-    string es = svgx.str();
-    es = "<xsl:if test=\"boolean(text()) or (count(child::node())!=0)\">"
-         "<xsl:apply-templates /></xsl:if><xsl:if test=\"not(boolean(text())) "
-         "and (count(child::node())=0)\">" + es + "</xsl:if>";
+    string es
+      = "<xsl:if test=\"boolean(text()) or (count(child::node())!=0)\">"
+        "<xsl:apply-templates /></xsl:if><xsl:if test=\"not(boolean(text())) "
+        "and (count(child::node())=0)\">";
+    es += svgx.str();
+    es += "</xsl:if>";
+    //string es = svgx.str();
+    //es = "<xsl:if test=\"boolean(text()) or (count(child::node())!=0)\">"
+    //     "<xsl:apply-templates /></xsl:if><xsl:if test=\"not(boolean(text())) "
+    //     "and (count(child::node())=0)\">" + es + "</xsl:if>";
 
     if (existbody_ || existdefs_)
     { // リンクを生成

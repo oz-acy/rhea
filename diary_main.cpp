@@ -4,7 +4,7 @@
  *  by oZ/acy
  *  (c) 2005-2012 oZ/acy.  ALL RIGHTS RESERVED.
  *
- *  last update: 3 Mar MMXII
+ *  last update: 1 Jul MMXIV
  *
  *************************************************************************/
 
@@ -18,7 +18,7 @@
 /*=====================================================
 *  createDiItemList()
 *  DiItem のリストをつくり、Makefile.D2 を出力
-*  update: 2011.4.25
+*  update: 2014.7.1
 *====================================================*/
 std::list<rhea::DiItem> createDiItemList()
 {
@@ -68,28 +68,28 @@ std::list<rhea::DiItem> createDiItemList()
 
   // ターゲット關係
   ofs << "all:" << alos.str()
-      << " html/diary/latest.html html/diary/latest.rdf"
-         " mediation/top/diary.html"
+      //<< " html/diary/latest.html html/diary/latest.rdf"
+      //   " mediation/top/diary.html"
       << endl << endl;
 
 
   // latest關係
-  dis.sort();
-  string latest = dis.back().filenamebase() + ".xml";
+  //dis.sort();
+  //string latest = dis.back().filenamebase() + ".xml";
 
-  ofs << "html/diary/latest.html : diary/" << latest << endl;
-  ofs << "\t$(XP) -o html/diary/latest.html diml2html-l.xsl diary/" << latest
-      << endl << endl;
+  //ofs << "html/diary/latest.html : diary/" << latest << endl;
+  //ofs << "\t$(XP) -o html/diary/latest.html diml2html-l.xsl diary/" << latest
+  //    << endl << endl;
 
-  ofs << "html/diary/latest.rdf : diary/" << latest << endl;
-  ofs << "\t$(XP) -o html/diary/latest.rdf diml2rss-l.xsl diary/" << latest
-      << endl << endl;
+  //ofs << "html/diary/latest.rdf : diary/" << latest << endl;
+  //ofs << "\t$(XP) -o html/diary/latest.rdf diml2rss-l.xsl diary/" << latest
+  //    << endl << endl;
 
 
   // 一覽關係
-  ofs << "mediation/top/diary.html : diary/" << latest << endl;
-  ofs << "\t$(XP) -o mediation/top/diary.html diml2html-t.xsl diary/" << latest
-      << endl << endl;
+  //ofs << "mediation/top/diary.html : diary/" << latest << endl;
+  //ofs << "\t$(XP) -o mediation/top/diary.html diml2html-t.xsl diary/" << latest
+  //    << endl << endl;
 
   // 各日記の依存關係
   ofs << mkos.str();

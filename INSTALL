@@ -1,9 +1,12 @@
-"INSTALL" of LIBNORN
+"INSTALL" of System RHEA
 
-1. ����Ū�ˤ� ./configure, make, make install ������Ԥ���С�
-   �ܥ饤�֥��Υإå��ե�����ڤӥ饤�֥�ꡦ���������֤�
-   /usr/local/include, /usr/local/lib �˥��󥹥ȡ��뤵��롣
+1. 基本的には、cmake, make, make install を順に實行すれば、
+   本ライブラリのヘッダファイルやライブラリアーカイブは
+   /usr/local/include, /usr/local/lib にインストールされる。
 
-2. prefix ���ι�������� ./configure --prefix=DIR ���ι�����Ф褤��
+2. prefix を變更する場合は cmake -DCMAKE_INSTALL_PREFIX=DIR とする。
+   其の他、configurationの方法は cmake の使ひ方を調べられたい。
 
-3. ����¾��./configure --help ���ԾȤΤ��ȡ�
+3. Autotools 關係のファイルの保守はやめたので、
+   殘つてゐるファイルが其の儘使へるとは限らない。
+   適宜修正して利用するのは可。
