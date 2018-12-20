@@ -2,16 +2,17 @@
  *
  *  rel.cpp
  *  by oZ/acy
- *  (c) 2005-2016 oZ/acy.  ALL RIGHTS RESERVED.
+ *  (c) 2005-2018 oZ/acy.  ALL RIGHTS RESERVED.
  *
- *  last update: 2016.10.20
+ *  last update: 2018.12.21
  *
  */
 
 #include <iostream>
 #include <fstream>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
+//#include <boost/filesystem/path.hpp>
+//#include <boost/filesystem/operations.hpp>
+#include <experimental/filesystem>
 #include "rel.h"
 #include "svisitor4gxml.h"
 
@@ -47,7 +48,8 @@ void readReferInfo(const std::string& dir, InRefMap& irm, ExRefMap& xrm)
 {
   using namespace std;
   using namespace rhea;
-  namespace fs = boost::filesystem;
+  //namespace fs = boost::filesystem;
+  namespace fs = std::experimental::filesystem;
 
   fs::path targetdir(dir);
   fs::directory_iterator end;

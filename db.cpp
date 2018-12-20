@@ -2,9 +2,9 @@
 *
 *  db.cpp
 *  by oZ/acy
-*  (c) 2005-2011 oZ/acy.  ALL RIGHTS RESERVED.
+*  (c) 2005-2018 oZ/acy.  ALL RIGHTS RESERVED.
 *
-*  last update: 25 Apr MMXI
+*  last update: 20 Dec MMXVIII
 *
 **************************************************************************/
 
@@ -12,8 +12,9 @@
 #include <fstream>
 #include <sstream>
 #include <list>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
+#include <filesystem>
+//#include <boost/filesystem/path.hpp>
+//#include <boost/filesystem/operations.hpp>
 #include <metis/parser.h>
 #include <metis/strescape.h>
 #include "svisitor4gxml.h"
@@ -214,7 +215,7 @@ public:
 DbInfo_::DbInfo_()
 {
   using namespace std;
-  namespace fs = boost::filesystem;
+  namespace fs = std::filesystem;
 
   fs::directory_iterator end;
 

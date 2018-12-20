@@ -2,14 +2,16 @@
  *
  *  diary_main.cpp
  *  by oZ/acy
- *  (c) 2005-2012 oZ/acy.  ALL RIGHTS RESERVED.
+ *  (c) 2005-2018 oZ/acy.  ALL RIGHTS RESERVED.
  *
- *  last update: 1 Jul MMXIV
+ *  last update: 21 Dec MMXVIII
  *
  *************************************************************************/
 
 #include <fstream>
-#include <boost/filesystem.hpp>
+#include <experimental/filesystem>
+//#include <filesystem>
+//#include <boost/filesystem.hpp>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <metis/strescape.h>
 #include "diary.h"
@@ -18,13 +20,15 @@
 /*=====================================================
 *  createDiItemList()
 *  DiItem のリストをつくり、Makefile.D2 を出力
-*  update: 2014.7.1
+*  update: 2018.12.21 とりあへず假置き
 *====================================================*/
 std::list<rhea::DiItem> createDiItemList()
 {
   using namespace std;
   using namespace rhea;
-  namespace fs = boost::filesystem;
+  //namespace fs = boost::filesystem;
+  //namespace fs = std::filesystem;
+  namespace fs = std::experimental::filesystem;
 
   ostringstream mkos;
   ostringstream alos;
@@ -104,20 +108,23 @@ std::list<rhea::DiItem> createDiItemList()
 
 
 
-/*===============================================================
-*  outputCategoryList()
-*  分類一覽を出力
-*  基本的にソースは .rdi であるので、
-*  ベタテキスト => Metis となる。
-*  Metis => 中間構造 => Metis になる部分の出力は
-*  it->toMetis() の部分のみ
-*
-*  H23.4.25 update for boost-1.46.1
-*==============================================================*/
+/*=========================================================================
+ *  outputCategoryList()
+ *  分類一覽を出力
+ *  基本的にソースは .rdi であるので、
+ *  ベタテキスト => Metis となる。
+ *  Metis => 中間構造 => Metis になる部分の出力は
+ *  it->toMetis() の部分のみ
+ *
+ *  H23.4.25 update for boost-1.46.1
+ *  H30.12.21 update for C++17? (filesystem: boost->std::experimental) 
+ *======================================================================*/
 void outputCategoryList(std::list<rhea::DiItem>& dis)
 {
   using namespace std;
-  namespace fs = boost::filesystem;
+  //namespace fs = boost::filesystem;
+  //namespace fs = std::filesystem;
+  namespace fs = std::experimental::filesystem;
   fs::path targetdir("contents");
   targetdir /= "diary";
 

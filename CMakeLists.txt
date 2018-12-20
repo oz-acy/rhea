@@ -8,7 +8,8 @@ SET(CMAKE_VERBOSE_MAKEFILE 1)
 #find_package(FLEX)
 #find_package(BISON)
 
-SET(CMAKE_CXX_FLAGS "-Wall -std=c++11 -O3")
+#SET(CMAKE_CXX_FLAGS "-Wall -std=c++11 -O3")
+SET(CMAKE_CXX_FLAGS "-Wall -std=c++17 -O3")
 
 #FLEX_TARGET(MyScanner lex.ll lex.cc)
 #BISON_TARGET(MyParser parse.yy parse.cc)
@@ -20,14 +21,14 @@ ADD_EXECUTABLE(metis2xml
   svisitor4gxml.cpp
   svisitor4rexml.cpp
 )
-TARGET_LINK_LIBRARIES(metis2xml metis boost_filesystem boost_system)
+TARGET_LINK_LIBRARIES(metis2xml metis)
 
 ADD_EXECUTABLE(rhea-diary
   diary.cpp
   diary_main.cpp
   svisitor2met.cpp
 )
-TARGET_LINK_LIBRARIES(rhea-diary metis boost_filesystem boost_system)
+TARGET_LINK_LIBRARIES(rhea-diary metis stdc++fs)
 
 ADD_EXECUTABLE(rhea-rel
   rel.cpp
@@ -35,7 +36,7 @@ ADD_EXECUTABLE(rhea-rel
   refer.cpp
   svisitor4gxml.cpp
 )
-TARGET_LINK_LIBRARIES(rhea-rel metis boost_filesystem boost_system)
+TARGET_LINK_LIBRARIES(rhea-rel metis stdc++fs)
 
 #ADD_EXECUTABLE(rhea-word
 #  word.cpp
@@ -50,7 +51,7 @@ TARGET_LINK_LIBRARIES(rhea-rel metis boost_filesystem boost_system)
 ADD_EXECUTABLE(rhea-content
   rel-ref.cpp
 )
-TARGET_LINK_LIBRARIES(rhea-content metis boost_filesystem boost_system)
+TARGET_LINK_LIBRARIES(rhea-content metis stdc++fs)
 
 INSTALL(
   TARGETS

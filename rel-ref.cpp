@@ -2,9 +2,9 @@
 *
 *  rel-ref.cpp
 *  by oZ/acy
-*  (c) 2005-2016 oZ/acy.  ALL RIGHTS RESERVED.
+*  (c) 2005-2018 oZ/acy.  ALL RIGHTS RESERVED.
 *
-*  last update: 2016.10.20
+*  last update: 2018.12.21
 *
 **************************************************************************/
 
@@ -12,7 +12,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <boost/filesystem.hpp>
+//#include <boost/filesystem.hpp>
+#include <experimental/filesystem>
 #include <metis/parser.h>
 #include "rel-ref.h"
 
@@ -107,12 +108,15 @@ insertContentToMap_S(
 // update: 2011.4.25
 void
 rcsvDownDirContents_S(
-  boost::filesystem::directory_iterator dit, std::string dirstr,
+  //boost::filesystem::directory_iterator dit,
+  std::experimental::filesystem::directory_iterator dit,
+  std::string dirstr,
   std::map<std::string, rhea::Content>& c1,
   std::map<std::string, rhea::Content>& c2)
 {
   using namespace std;
-  namespace fs = boost::filesystem;
+  //namespace fs = boost::filesystem;
+  namespace fs = std::experimental::filesystem;
 
   fs::directory_iterator end;
 
@@ -150,7 +154,8 @@ rcsvDownDirContents_S(
 rhea::ContentSet::ContentSet()
 {
   using namespace std;
-  namespace fs = boost::filesystem;
+  //namespace fs = boost::filesystem;
+  namespace fs = std::experimental::filesystem;
 
   try
   {
