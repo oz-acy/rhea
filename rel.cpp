@@ -2,11 +2,11 @@
  *
  *  rel.cpp
  *  by oZ/acy
- *  (c) 2005-2011 oZ/acy.  ALL RIGHTS RESERVED.
+ *  (c) 2005-2016 oZ/acy.  ALL RIGHTS RESERVED.
  *
- *  last update: 8 Oct MMXI
+ *  last update: 2016.10.20
  *
- *************************************************************************/
+ */
 
 #include <iostream>
 #include <fstream>
@@ -82,9 +82,21 @@ void readReferInfo(const std::string& dir, InRefMap& irm, ExRefMap& xrm)
           ir.setAsWord();
           irm.insert(make_pair(id, ir));
         }
+        else if (vs[3] == "AW" && vs.size() >= 6)
+        {
+          InRefer ir(vs[2], vs[4], vs[5], ReferBase::TY_ABBR);
+          ir.setAsWord();
+          irm.insert(make_pair(id, ir));
+        }
         else if (vs[3] == "A" && vs.size() >= 6)
         {
           InRefer ir(vs[2], vs[4], vs[5], ReferBase::TY_ABBR);
+          irm.insert(make_pair(id, ir));
+        }
+        else if (vs[3] == "NW" && vs.size() >= 6)
+        {
+          InRefer ir(vs[2], vs[4], vs[5], ReferBase::TY_NOTE);
+          ir.setAsWord();
           irm.insert(make_pair(id, ir));
         }
         else if (vs[3] == "N" && vs.size() >= 6)
@@ -106,9 +118,21 @@ void readReferInfo(const std::string& dir, InRefMap& irm, ExRefMap& xrm)
           ir.setAsWord();
           irm.insert(make_pair(id, ir));
         }
+        else if (vs[3] == "AW" && vs.size() >= 6)
+        {
+          InRefer ir(vs[4], vs[5], ReferBase::TY_ABBR);
+          ir.setAsWord();
+          irm.insert(make_pair(id, ir));
+        }
         else if (vs[3] == "A" && vs.size() >= 6)
         {
           InRefer ir(vs[4], vs[5], ReferBase::TY_ABBR);
+          irm.insert(make_pair(id, ir));
+        }
+        else if (vs[3] == "NW" && vs.size() >= 6)
+        {
+          InRefer ir(vs[4], vs[5], ReferBase::TY_NOTE);
+          ir.setAsWord();
           irm.insert(make_pair(id, ir));
         }
         else if (vs[3] == "N" && vs.size() >= 6)

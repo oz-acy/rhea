@@ -2,14 +2,15 @@
 *
 *  rel-ref.cpp
 *  by oZ/acy
-*  (c) 2005-2013 oZ/acy.  ALL RIGHTS RESERVED.
+*  (c) 2005-2016 oZ/acy.  ALL RIGHTS RESERVED.
 *
-*  last update: 30 Jun MMXIII
+*  last update: 2016.10.20
 *
 **************************************************************************/
 
 
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <boost/filesystem.hpp>
 #include <metis/parser.h>
@@ -295,10 +296,17 @@ rhea::Content::toLog(const std::string& id) const
     oss << "N\t" << id << "\tnone\t";
   }
   
-  if (!abbr_.empty())
-    oss << "A\t" << title_ << "\t" << abbr_ << std::endl;
-  else if (!note_.empty())
-    oss << "N\t" << title_ << "\t" << note_ << std::endl;
+  if (!abbr_.empty()) {
+    if (isWord_)
+      oss << "AW\t" << title_ << "\t" << abbr_ << std::endl;
+    else
+      oss << "A\t" << title_ << "\t" << abbr_ << std::endl;
+  } else if (!note_.empty()) {
+    if (isWord_)
+      oss << "NW\t" << title_ << "\t" << note_ << std::endl;
+    else
+      oss << "N\t" << title_ << "\t" << note_ << std::endl;
+  }
   else if (isWord_)
     oss << "W\t" << title_ << std::endl;
   else
