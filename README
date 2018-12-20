@@ -1,40 +1,40 @@
 "README" of RHEA
 
-�ܥץ�����ෲ�ϡ���Ԥα��ۤ���Web�����ȡ�¿���˵�פδ��������ۤ�ત�
-�����ƥ�������Ƥ�롣
+本プログラム群は、作者の運營するWebサイト「多言數窮」の管理・構築の爲の
+システムを構成してゐる。
 
-�ƥץ������������򵭤���
+各プログラムの説明を記す。
 
 metis2xml
-  LIBMETIS���Ѥ�ơ�Metis���Ҥ�XML���Ҥ��δ����롣
+  LIBMETISを用ゐて、Metis記述をXML記述に變換する。
 
 rhea-diary
-  ���������ץ�����ࡣ
-  �����Ѥ˵��Ҥ��줿Metis���ҷ����顢���ƥ���ʬ��ꥹ�ȤΥ�����Metis���Ҥ䡢
-  HTML���δ����뤿���Makefile���������롣
+  日記管理プログラム。
+  日記用に記述されたMetis記述群から、カテゴリ分類リストのソースMetis記述や、
+  HTMLに變換するためのMakefileを生成する。
 
 rhea-word
-  �Ѹ�Ͽ�����ץ�����ࡣ
-  �Ѹ�Ͽ�Ѥ˵��Ҥ��줿Metis���ҷ����顢����ǥå����ڡ����Υ������䡢
-  HTML���δ����뤿���Makefile���������롣
+  用語録管理プログラム。
+  用語録用に記述されたMetis記述群から、インデックスページのソースや、
+  HTMLに變換するためのMakefileを生成する。
 
 rhea-dicout
-  �Ѹ�Ͽ�����ץ������(��)��
-  �Ť��ե����ޥå��ѡ�
+  用語録管理プログラム(舊)。
+  古いフォーマット用。
 
 rhea-content
-  ����ƥ�ĤΥ����������顢HTML���δ����뤿���Makefile�䡢
-  �ƥ���ƥ�Ĥ�Ϣ���Ѿ�����������롣
+  コンテンツのソース群から、HTMLに變換するためのMakefileや、
+  各コンテンツの連結用情報を生成する。
 
 rhea-rel
-  ����ƥ�Ĥ�Ϣ���Ѿ����Ż���HTML�δ���XSLT���������롣
-  �����ڡ����ؤ�Ϣ���Ѿ���ʤɤ�rhea-content������������ΤȰ��˰��ա�
+  コンテンツの連結用情報を纏めてHTML變換用XSLTを生成する。
+  外部ページへの連結用情報などもrhea-contentで生成されるものと一緒に扱ふ。
 
 rhea-log
-  ����ڡ������������롣
+  履歴ページを生成する。
 
 rhea-top
-  �ȥåץڡ������������롣
+  トップページを生成する。
 
 ==================================================
 oZ/acy
